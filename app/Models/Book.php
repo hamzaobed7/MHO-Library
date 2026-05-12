@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
+    use HasFactory;
     protected $table = 'books';
     protected $primaryKey = 'ISBN';
     public $incrementing = false;
@@ -19,8 +21,12 @@ class Book extends Model
     ];
     protected $guarded = ['quantity','available_quantity'];
 
-    public function category()
+   public function category()
+{
+    return $this->belongsTo(Catigory::class, 'category_id');
+}
+    public function authors()
     {
-        return $this->belongsTo(Catigory::class, 'id');
+        return $this->belongsToMany(Author::class, 'authorbook', 'book_iSBN', 'author_id');
     }
 }

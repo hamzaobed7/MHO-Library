@@ -10,4 +10,11 @@ class author extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['name', 'email', 'bio','gender','birthdate','birth_date'];
     protected $guarded = ['id'];
+
+function books()
+    {
+        return $this->belongsToMany(Book::class, 'authorbook', 'author_id', 'book_iSBN');
+    }
+
 }
+

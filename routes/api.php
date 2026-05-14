@@ -37,7 +37,10 @@ Route::apiResource('/catigories',CatigoryController::class);
 // Route::delete('/books/{id}',[BookController::class,'delete']);
 // Route::get('/books/{id}',[BookController::class,'show']);
 // Route::put('/books/{id}',[BookController::class,'update']);
-Route::get('/books/search', [BookController::class, 'search']);
+
+//for searching by this expression
+Route::get('/books/search', [BookController::class, 'search'])
+->where('name', 'LIKE', "%{name}%");  
 Route::apiResource('/books',BookController::class);
 
 

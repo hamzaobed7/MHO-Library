@@ -8,7 +8,7 @@ class author extends Model
 {
     protected $table = 'authors';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'email', 'bio','gender','birthdate','birth_date'];
+    protected $fillable = ['name', 'email', 'bio','gender','birth_date'];
     protected $guarded = ['id'];
 
 function books()
